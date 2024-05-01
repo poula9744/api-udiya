@@ -41,4 +41,32 @@ public class LebService {
 
 		return franchiseeName;
 	}
+	
+	//결제하기
+	public int exeMakeReceipt(LebVo lebVo) {
+		System.out.println("LebService.exeMakeReceipt()");
+		
+		//1. 영수증 만들기 
+		int receiptNo = lebDao.makeReceipt(lebVo);
+
+		//2. 마일리지 증감
+		if(lebVo.getUsemile() != 0) {
+			lebVo.setTotalmile(lebVo.getTotalmile() - lebVo.getUsemile());
+			lebDao.downMile(lebVo);
+		} else {
+			lebVo.setTotalmile(lebVo.getTotalmile() + lebVo.getUsemile());
+			lebDao.upMile(lebVo);
+		}
+		return receiptNo;
+	}
+	
+	//3. 상품 히스토리 만들기
+	public int exeMakeHistory(List<LebVo> historyList) {
+		System.out.println("LebService.exeMakeHistory()");
+		for(int i=0; i<historyList.size(); i++) {
+			lebDao.makeReceipt(historyList.get(i));
+		}
+		return 0;
+	}
+	
 }

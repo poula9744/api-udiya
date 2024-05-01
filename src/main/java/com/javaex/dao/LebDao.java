@@ -34,4 +34,33 @@ public class LebDao {
 		String franchiseeName = sqlSession.selectOne("leb.selectFran");
 		return franchiseeName;
 	}
+	
+	//영수증 만들기
+	public int makeReceipt(LebVo lebVo) {
+		System.out.println("LebDao.makeReceipt()");
+		int receiptNo = sqlSession.insert("leb.makeReceipt", lebVo);
+		return receiptNo;
+	}
+	
+	//마일리지 차감
+	public int downMile(LebVo lebVo) {
+		System.out.println("LebDao.downMile()");
+		int count = sqlSession.insert("leb.downMile", lebVo);
+		return count;
+	}
+	//마일리지 증가
+	public int upMile(LebVo lebVo) {
+		System.out.println("LebDao.downMile()");
+		int count = sqlSession.insert("leb.upMile", lebVo);
+		return count;
+	}
+	
+	//상품  history 만들기
+	public int makeHistory(LebVo lebVo) {
+		System.out.println("LebDao.makeHistory()");
+		int count = sqlSession.insert("leb.makeHistory", lebVo);
+		return count;
+	}
+	
+	
 }
