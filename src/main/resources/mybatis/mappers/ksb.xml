@@ -3,5 +3,53 @@
 
 <mapper namespace="ksb">
 	
+	<!-- 전체 폼 부르기 -->
+	
+	<select id="selectList" resultType="com.javaex.vo.ProductVo">
+		<![CDATA[
+			select  p.cate_no,
+					p.product_no,
+					p.productname,
+					p.price,
+					p.text,
+					p.picture,
+					p.size,
+                    c.cate_name
+			from product p
+			left join cate c on p.cate_no = c.cate_no
+		]]>
+	
+	</select>
+	
+	
+	
+	<!-- 상세 폼 부르기 -->
+	
+	<select id="selectOne" parameterType = "int" resultType="com.javaex.vo.ProductVo">
+		<![CDATA[
+			select  p.cate_no,
+					p.product_no,
+					p.productname,
+					p.price,
+					p.text,
+					p.picture,
+					p.size,
+                    c.cate_name
+            from product p
+			left join cate c on p.cate_no = c.cate_no
+			where p.product_no= #{product_no}
+			and p.cate_no = #{cate_no}
+		]]>
+		
+	</select>
+	
+	
+	<!-- 장바구니에 저장 -->
+	<insert id="insertCart" parameterType="com.javaex.vo.KsbVo">
+		<![CDATA[
+			insert into shop
+			values (null, 1, #{product_no}, #{hi_no}, #{count});	
+		]]>
+	</insert>
 	
 </mapper>
