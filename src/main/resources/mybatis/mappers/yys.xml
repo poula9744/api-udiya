@@ -2,6 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="yys">
-	
+
+	<!-- 전체리스트 -->
+	<select id="selectList" resultType="ProductVo">
+		<![CDATA[
+			select p.product_no, p.cate_no, p.productname, p.price, p.text, p.picture, p.size, c.cate_name
+			from product p
+			left join cate c on p.cate_no = c.cate_no
+		]]>
+	</select>
 	
 </mapper>

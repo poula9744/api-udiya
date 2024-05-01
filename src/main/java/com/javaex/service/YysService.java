@@ -1,9 +1,25 @@
 package com.javaex.service;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.javaex.dao.YysDao;
+import com.javaex.vo.ProductVo;
 
 @Service
 public class YysService {
 
-	//공주살려
+	@Autowired
+	private YysDao yysDao;
+
+	// 리스트 가져오기
+	public List<ProductVo> exepList() {
+		System.out.println("YysService.exepList()");
+
+		List<ProductVo> pList = yysDao.pSelectList();
+
+		return pList;
+	}
 }
