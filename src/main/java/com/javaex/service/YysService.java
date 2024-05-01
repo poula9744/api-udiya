@@ -15,10 +15,12 @@ public class YysService {
 	private YysDao yysDao;
 
 	// 리스트 가져오기
-	public List<ProductVo> exepList() {
+	public List<ProductVo> exepList(int cate_no) {
 		System.out.println("YysService.exepList()");
 
-		List<ProductVo> pList = yysDao.pSelectList();
+		List<ProductVo> pList = yysDao.pSelectList(cate_no);
+		
+		
 
 		return pList;
 	}

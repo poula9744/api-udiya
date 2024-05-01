@@ -16,11 +16,10 @@ public class YysDao {
 	private SqlSession sqlSession;
 
 	// 리스트 가져오기
-		public List<ProductVo> pSelectList() {
+		public List<ProductVo> pSelectList(int cate_no) {
 			System.out.println("YysDao.pSelectList()");
 
-			List<ProductVo> pList = sqlSession.selectList("yys.selectList");
-			System.out.println(pList);
+			List<ProductVo> pList = sqlSession.selectList("yys.selectList", cate_no);
 
 			return pList;
 		}
