@@ -30,7 +30,7 @@ public class KjhDao {
 	
 	//영수증별 상품이름 사진 가져오기
 	public JhVo3 product(int a) {
-		//System.out.println(a);
+		System.out.println(a);
 		return sqlSession.selectOne("kjh.product", a);
 	}
 	

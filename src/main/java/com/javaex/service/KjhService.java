@@ -39,16 +39,17 @@ public class KjhService {
 		List<JhVo3> plist = new ArrayList();
 		
 		for(int i = 0; i<olist.size(); i++) {
-			int a = olist.get(i).getReceiptNo();
 			
-			//System.out.println(kd.product(a));
+			int a = olist.get(i).getReceiptNo();
+			System.out.println(a);
+			System.out.println(kd.product(a));
 			
 			JhVo3 j = kd.product(a);
 			//System.out.println(j);
 			
 			plist.add(j);
 		}
-		System.out.println(plist);
+		//System.out.println(plist);
 		
 		List<JhVo4> orderList = new ArrayList<>();
 		JhVo4 j = new JhVo4();
