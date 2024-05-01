@@ -3,5 +3,44 @@
 
 <mapper namespace="leb">
 	
+	<!-- 장바구니에 담긴 상품정보 -->
+	<select id="selectShop" resultType="LebVo">
+		<![CDATA[
+			SELECT 
+						p.productname,
+						p.price,
+						p.text,
+						p.picture,
+						p.size,
+						hi.hoi,
+						s.count
+			FROM users u
+			LEFT JOIN shop s ON u.users_no = s.users_no
+			LEFT JOIN hi ON s.hi_no = hi.hi_no
+			LEFT JOIN product p ON p.product_no = s.product_no
+			LEFT JOIN cate c ON c.cate_no = p.cate_no
+			where u.users_no = 1
+		]]>
+	</select>
+	
+	<!-- 마일리지 정보 불러오기 -->
+	<select id="selectMile" resultType="int">
+		<![CDATA[
+			select totalmile
+			from mile
+			where users_no = 1
+			order by date desc
+			limit 1
+		]]>
+	</select>
+	
+	<!-- 지점 정보 불러오기 -->
+	<select id="selectFran" resultType="String">
+		<![CDATA[
+			select franchisee_name 
+			from franchisee
+			where franchisee_no = 1
+		]]>
+	</select>
 	
 </mapper>
