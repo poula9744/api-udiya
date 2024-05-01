@@ -2,6 +2,40 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kjh">
+	<select id="pick" resultType="int">
+		select	receipt_no
+		from receipt
+		order by receipt_no desc
+		limit 1
+	</select>
 	
+	<select id="receiptNo" resultType="com.javaex.vo.JhVo2">
+		select	receipt_no receiptNo,
+		        selltime,
+		        franchisee_name franchiseeName,
+		        total
+		from receipt, franchisee
+		where receipt.franchisee_no = franchisee.franchisee_no
+		order by receipt_no desc
+		limit 5;
+	</select>
 	
+	<select id="product" parameterType="int" resultType="com.javaex.vo.JhVo3">
+		select	productname,
+				picture,
+		        count
+		from history, product
+		where receipt_no = #{a}
+		and history.product_no = product.product_no
+		limit 1
+	</select>
+	
+	<select id="mile" resultType="com.javaex.vo.KjhVo">
+		select	nick,
+				mile
+		from users, mile
+		where users.users_no = mile.users_no
+		and users.users_no = 1
+		limit 1
+	</select>
 </mapper>
