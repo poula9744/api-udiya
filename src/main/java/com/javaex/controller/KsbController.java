@@ -37,12 +37,12 @@ public class KsbController {
 	
 	//장바구니에 추가하기
 	@PostMapping(value="/api/udiya/addCart")
-	public String addCart(@RequestBody KsbVo ksbVo) {
+	public int addCart(@RequestBody KsbVo ksbVo) {
 		System.out.println("KsbController.insertShopping");
 		
 		int count = ksbService.exeAddCart(ksbVo);
-		String result = "{\"count\":"+count+"}";
+		//String result = "{\"count\":"+count+"}";
 		
-		return result;
+		return count;
 	}
 }
