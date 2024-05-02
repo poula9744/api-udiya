@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="yds">
-	
-	
+
+
 	<!-- 장바구니 불러오기 -->
 	<select id="selectList" parameterType="int" resultType="com.javaex.vo.YdsVo">
 	
@@ -30,9 +30,9 @@
 	where s.users_no = #{usersNo}
 	
 	]]>
-	
+
 	</select>
-	
+
 	<!-- 장바구니에서 아이템 삭제 -->
 	<delete id="deleteProduct" parameterType="int">
 	
@@ -42,7 +42,25 @@
 	where shop_no = #{shopNo}
 	
 	]]>
-	
+
 	</delete>
-	
+
+	<!-- 음료H/I수정 -->
+	<update id="updateProduct" parameterType="YdsVo">
+		<![CDATA[ 
+			update shop
+			set hi_no = #{hiNo}
+			where shop_no =#{shopNo} ; 
+		]]>
+	</update>
+
+	<!-- 수정 update -->
+	<update id="update" parameterType="YdsVo">
+		<![CDATA[
+			update shop
+			set count = #{ count }
+			where shop_no = #{ shopNo };
+		]]>
+	</update>
+
 </mapper>

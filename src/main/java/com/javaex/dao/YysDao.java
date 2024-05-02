@@ -24,14 +24,6 @@ public class YysDao {
 		return pList;
 	}
 
-	// //////////////////////////////////////////////////////////////////////////
 	
-	// 수정
-	public int shopModify(YdsVo ydsVo) {
-		System.out.println("YysDao.shopModify()");
-
-		int count = sqlSession.update("yys.update", ydsVo);
-		return count;
-	}
 
 }

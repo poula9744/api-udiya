@@ -29,26 +29,6 @@ public class YysController {
 		return productList;
 	}
 
-	// //////////////////////////////////////////////////////////////////////////
-	// 수정
-	@PutMapping(value = "/api/shop/modify/{shop_no}")
-	public String modify(@RequestBody YdsVo ydsVo, @PathVariable(value = "shop_no") int shop_no) {
-		System.out.println("YysController.modify()");
 
-		//System.out.println(ydsVo);
-		//System.out.println(shop_no);
-		ydsVo.setShopNo(shop_no);
-		System.out.println(shop_no);
-
-		// 삭제
-		// 코드작성할것
-		int count = yysService.exeModify(ydsVo);
-
-		String result = "{\"count\": " + count + "}";
-		System.out.println(result);
-
-		//return null;
-		return result;
-	}
 
 }

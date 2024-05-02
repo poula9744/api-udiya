@@ -24,14 +24,6 @@ public class YysService {
 		return pList;
 	}
 
-	// /////////////////////////////////////////////////////////
-	// 수정
-	public int exeModify(YdsVo ydsVo) {
-		System.out.println("YysService.exeModify()");
 
-		int count = yysDao.shopModify(ydsVo);
-
-		return count;
-	}
 
 }
