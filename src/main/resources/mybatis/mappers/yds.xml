@@ -4,4 +4,45 @@
 <mapper namespace="yds">
 	
 	
+	<!-- 장바구니 불러오기 -->
+	<select id="selectList" parameterType="int" resultType="com.javaex.vo.YdsVo">
+	
+	<![CDATA[
+	
+	select  p.picture,
+			p.productname,
+			p.price,
+			h.hoi,
+			p.size,
+			s.count,
+			u.users_no usersNo,
+			s.shop_no shopNo,
+			h.hi_no hiNo
+			
+	from 
+		shop s
+	join 
+    	product p on s.product_no = p.product_no
+	join 
+    	hi h on s.hi_no = h.hi_no
+	join
+		users u on s.users_no = u.users_no	
+	where s.users_no = #{usersNo}
+	
+	]]>
+	
+	</select>
+	
+	<!-- 장바구니에서 아이템 삭제 -->
+	<delete id="deleteProduct" parameterType="int">
+	
+	<![CDATA[
+	
+	delete from shop
+	where shop_no = #{shopNo}
+	
+	]]>
+	
+	</delete>
+	
 </mapper>
