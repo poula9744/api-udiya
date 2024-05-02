@@ -7,11 +7,13 @@
 	<select id="selectShop" resultType="LebVo">
 		<![CDATA[
 			SELECT 
+						p.product_no,
 						p.productname,
 						p.price,
 						p.text,
 						p.picture,
 						p.size,
+						hi.hi_no,
 						hi.hoi,
 						s.count
 			FROM users u
@@ -46,8 +48,8 @@
 	<!-- 장바구니 비우기 -->
 	<delete id="deleteCart" >
 		<![CDATA[
-			delete from cart
-			where user_no =1
+			delete from shop
+			where users_no =1
 		]]>
 	</delete>
 	
@@ -59,7 +61,7 @@
 		]]>
 		<selectKey keyProperty="receipt_no" resultType="int" order="AFTER">
 			<![CDATA[
-				select last_insert_id();
+				select last_insert_id()
 			]]>
 		</selectKey>
 	</insert>
@@ -68,13 +70,13 @@
 	<insert id="downMile" parameterType="LebVo">
 		<![CDATA[
 			insert into mile
-			values(1, now(), #{mile}, "사용", #{totalmile}" )
+			values(1, now(), #{usemile}, "사용", #{totalmile})
 		]]>
 	</insert>
 	<insert id="upMile" parameterType="LebVo">
 		<![CDATA[
 			insert into mile
-			values(1, now(), #{mile}, "적립", #{totalmile}" )
+			values(1, now(), #{usemile}, "적립", #{totalmile})
 		]]>
 	</insert>
 	
@@ -85,5 +87,29 @@
 			values(null, #{product_no}, #{receipt_no}, #{hi_no}, #{count})
 		]]>
 	</insert>
+	
+	
+	<!-- 바로구매 바로구매 바로구매 바로구매 바로구매 -->
+	<!-- 세부페이지에서 바로 구매 버튼 누르기 -->
+	<select id="selectDirect" resultType="LebVo" parameterType="int">
+		<![CDATA[
+			select product_no,
+					productname,
+					price,
+					text,
+					picture,
+					size
+			from product
+			where product_no = #{product_no}
+		]]>
+	</select>
+	<select id="hoi" resultType="String" parameterType="int">
+		<![CDATA[
+			select hoi
+			from hi
+			where hi_no = #{hi_no}
+		]]>
+	</select>
+	
 	
 </mapper>
