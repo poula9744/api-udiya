@@ -24,4 +24,19 @@
 			
 	</select>
 	
+	
+	
+	
+	
+	
+	
+	<!-- 수정 update -->
+	<update id="update" parameterType="YdsVo">
+		<![CDATA[
+			update shop
+			set count = #{ count }
+			where shop_no = #{ shopNo };
+		]]>
+	</update>
+	
 </mapper>

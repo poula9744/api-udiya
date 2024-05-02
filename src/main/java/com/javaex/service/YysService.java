@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.javaex.dao.YysDao;
 import com.javaex.vo.ProductVo;
+import com.javaex.vo.YdsVo;
 
 @Service
 public class YysService {
@@ -19,9 +20,18 @@ public class YysService {
 		System.out.println("YysService.exepList()");
 
 		List<ProductVo> pList = yysDao.pSelectList(cate_no);
-		
-		
 
 		return pList;
 	}
+
+	// /////////////////////////////////////////////////////////
+	// 수정
+	public int exeModify(YdsVo ydsVo) {
+		System.out.println("YysService.exeModify()");
+
+		int count = yysDao.shopModify(ydsVo);
+
+		return count;
+	}
+
 }
