@@ -51,9 +51,10 @@ public class KjhService {
 		}
 		//System.out.println(plist);
 		
-		List<JhVo4> orderList = new ArrayList<>();
-		JhVo4 j = new JhVo4();
+		List<JhVo4> orderList = new ArrayList<JhVo4>();
+		
 		for(int i = 0; i<olist.size(); i++) {
+			JhVo4 j = new JhVo4();
 			int receiptNo = olist.get(i).getReceiptNo();
 			String sellTime = olist.get(i).getSelltime();
 			String franchiseeName = olist.get(i).getFranchiseeName();
@@ -61,6 +62,7 @@ public class KjhService {
 			String productName = plist.get(i).getProductName();
 			String picture = plist.get(i).getPicture();
 			int count = plist.get(i).getCount();
+						
 			j.setCount(count);
 			j.setFranchiseeName(franchiseeName);
 			j.setPicture(picture);
@@ -68,7 +70,8 @@ public class KjhService {
 			j.setReceiptNo(receiptNo);
 			j.setSelltime(sellTime);
 			j.setTotal(total);
-			orderList.add(j);
+			orderList.add(i, j);
+			
 		}
 		System.out.println(orderList);
 		
