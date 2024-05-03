@@ -24,9 +24,9 @@ public class YdsController {
 	@GetMapping("/api/shop/list/{usersNo}")
 	public JsonResult list(@PathVariable(value = "usersNo") int usersNo) {
 		System.out.println("YdsController.list()");
-		System.out.println(usersNo);
+		//System.out.println(usersNo);
 		List<YdsVo> cList = ydsService.exeList(usersNo);
-		System.out.println(cList);
+		//System.out.println(cList);
 
 		return JsonResult.success(cList);
 	}
@@ -36,11 +36,11 @@ public class YdsController {
 	public JsonResult itemDelete(@RequestBody YdsVo ydsVo, @PathVariable("shopNo") int shopNo) {
 		System.out.println("YdsController.delete()");
 
-		System.out.println(shopNo);
+		//System.out.println(shopNo);
 
 		ydsService.exeDelete(ydsVo);
 
-		System.out.println(shopNo);
+		//System.out.println(shopNo);
 
 		return JsonResult.success("삭제되었습니다.");
 	}
@@ -62,11 +62,31 @@ public class YdsController {
 	public JsonResult typeUpdate(@RequestBody YdsVo updateHI, @PathVariable("shopNo") int shopNo) {
 		System.out.println("YdsController.updateBeverageType()");
 
-		System.out.println(shopNo);
+		//System.out.println(shopNo);
+		//System.out.println(updateHI);
 
-		ydsService.exeTypeUpdate(updateHI);
+		updateHI.setShopNo(shopNo);
+		
+		if (updateHI.getHiNo() == 1 || updateHI.getHiNo() == 3) {
+			updateHI.setHiNo(2);
+			//System.out.println(updateHI);
+			ydsService.exeTypeUpdate(updateHI);
+			
+			
+		} else if (updateHI.getHiNo() == 2 || updateHI.getHiNo() == 4) {
+			updateHI.setHiNo(1);
+			System.out.println(updateHI);
+			ydsService.exeTypeUpdate(updateHI);
+			
+			
+		}
+		
+		
+		
+		
+		
 
-		System.out.println(shopNo);
+		//System.out.println(shopNo);
 
 		return JsonResult.success("음료 타입이 바뀌었습니다.");
 	}
@@ -81,8 +101,6 @@ public class YdsController {
 		ydsVo.setShopNo(shop_no);
 		System.out.println(shop_no);
 
-		// 삭제
-		// 코드작성할것
 		int count = ydsService.exeModify(ydsVo);
 
 		String result = "{\"count\": " + count + "}";
@@ -91,6 +109,7 @@ public class YdsController {
 		// return null;
 		return result;
 	}
+	
 
 	// 다솜이꺼
 }

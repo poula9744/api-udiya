@@ -31,7 +31,8 @@ public class YdsDao {
 
 	// HI 수정
 	public int hiUpdate(YdsVo updateHI) {
-		System.out.println("YdsDao.cartDelete()");
+		System.out.println("YdsDao.hiUpdate()");
+		System.out.println(updateHI);
 		int count = sqlSession.update("yds.updateProduct", updateHI);
 
 		return count;

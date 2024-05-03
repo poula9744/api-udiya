@@ -30,7 +30,7 @@ public class YdsService {
 		ydsDao.productDelete(ydsVo);
 	}
 
-	// 수량 수정
+	// HI 수정
 	public int exeTypeUpdate(YdsVo updateHI) {
 		System.out.println("YdsService.exeTypeUpdate()");
 
@@ -39,7 +39,7 @@ public class YdsService {
 
 	}
 
-	// 수정
+	//수량 수정
 	public int exeModify(YdsVo ydsVo) {
 		System.out.println("YysService.exeModify()");
 
