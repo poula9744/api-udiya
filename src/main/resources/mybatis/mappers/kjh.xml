@@ -32,10 +32,11 @@
 	
 	<select id="mile" resultType="com.javaex.vo.KjhVo">
 		select	nick,
-				mile
+				totalmile mile
 		from users, mile
 		where users.users_no = mile.users_no
 		and users.users_no = 1
+		order by date desc
 		limit 1
 	</select>
 </mapper>
